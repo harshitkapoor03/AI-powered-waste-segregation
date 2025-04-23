@@ -64,7 +64,7 @@ graph TD;
 |--------------------------------------|-----------------------------------------------------------------------------|
 | `Fine Tuning the Resnet model.ipynb` | Jupyter notebook for data preprocessing, training, and model evaluation    |
 | `Webcam integration.ipynb`           | Real-time classification via webcam and trained model                      |
-| `servo_motor_control.py`             | (To be uploaded) Controls servo motors based on model predictions          |
+| `servo_motor_control.py`             |  Controls servo motors based on model predictions          |
 | `Simulation of Waste Segregator.mp4` | Video demo showcasing the entire system in action                          |
 | `Demonstration of running waste classifier AI.mp4` | Video demo showcasing the AI classifying different kinds of waste          |
 | `LICENSE`                            | MIT License                                                                 |
