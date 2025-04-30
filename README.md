@@ -1,151 +1,112 @@
+# AI-Powered Waste Segregation System
 
+This project implements a smart waste sorting system that uses computer vision to classify trash and automatically sorts it into different bins. I built this to explore how AI can help solve real-world sustainability challenges.
 
----
+## How It Works
 
-# ♻️ AI-powered Waste Segregation
+The system has three main components:
 
-An end-to-end, AI-driven waste segregation system combining deep learning with physical sorting mechanisms. This project utilizes a fine-tuned ResNet model to classify waste in real time and directs servo-controlled flaps to sort the waste accordingly. Ideal for smart bins, recycling centers, research, and educational purposes.
+1. **Computer Vision Model** - A fine-tuned ResNet152V2 model that classifies waste into:
+   - Organic
+   - Recyclable 
+   - Non-recyclable
 
----
+2. **Real-Time Classification** - Processes live webcam feed to identify waste items
 
-## 📑 Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [System Architecture](#system-architecture)
-- [Repository Structure](#repository-structure)
-- [Installation](#installation)
-- [Usage Guide](#usage-guide)
-- [Applications](#applications)
-- [Contributing](#contributing)
-- [License](#license)
+3. **Physical Sorting Mechanism** - Uses servo motors to open the correct bin flap based on the AI's classification
 
----
+## Key Features
 
-## 🧠 Overview
+- Custom-trained deep learning model with ~90% accuracy
+- Real-time processing using webcam feed
+- Physical sorting via servo-controlled flaps
+- Modular design allows easy improvements
+- Includes training notebooks and demo videos
 
-This project leverages computer vision and hardware control to automate waste segregation. It consists of three core modules:
+## Technical Details
 
-1. **Model Training & Fine-Tuning**  
-   A ResNet-based CNN is trained to classify waste into *organic*, *recyclable*, and *non-recyclable* categories.
-   
-2. **Real-Time Classification**  
-   The trained model is integrated with a webcam to perform live predictions.
+### Model Training
+- Used ResNet152V2 pretrained on ImageNet
+- Fine-tuned on custom waste dataset
+- Implemented data augmentation to improve generalization
+- Achieved 90% validation accuracy
 
-3. **Physical Sorting**  
-   Based on predictions, servo motors actuate flaps to route waste into designated bins.
+### Hardware Integration
+- Raspberry Pi 4 as the control unit
+- Standard servo motors for flap control
+- Webcam for live classification
+- 3D-printed bin dividers (optional)
 
----
+## Getting Started
 
-## 🚀 Features
+### Requirements
+- Python 3.7+
+- TensorFlow/Keras
+- OpenCV
+- RPi.GPIO (for hardware control)
 
-- ✅ **Fine-tuned ResNet152V2** model for image-based waste classification  
-- 📷 **Live webcam integration** for real-time predictions  
-- ⚙️ **Servo-based sorting system** for physical waste separation  
-- 📊 Visualization tools for training metrics and confusion matrices  
-- 🔌 **Modular design** for training, inference, and hardware control  
-
----
-
-## 🛠️ System Architecture
-
-```mermaid
-graph TD;
-    A[Webcam] --> B[ResNet152V2 Model];
-    B --> C[Predicted Class];
-    C --> D[Servo Controller];
-    D --> E[Flap Actuation];
+### Setup
+1. Clone the repo:
+```bash
+git clone https://github.com/yourusername/AI-waste-sorter.git
+cd AI-waste-sorter
 ```
 
----
-
-## 📁 Repository Structure
-
-| File/Folder                          | Description                                                                 |
-|--------------------------------------|-----------------------------------------------------------------------------|
-| `Fine Tuning the Resnet model.ipynb` | Jupyter notebook for data preprocessing, training, and model evaluation    |
-| `Webcam integration.ipynb`           | Real-time classification via webcam and trained model                      |
-| `servo_motor_control.py`             |  Controls servo motors based on model predictions          |
-| `Simulation of Waste Segregator.mp4` | Video demo showcasing the entire system in action                          |
-| `Demonstration of running waste classifier AI.mp4` | Video demo showcasing the AI classifying different kinds of waste          |
-| `LICENSE`                            | MIT License                                                                 |
-
----
-
-## ⚙️ Installation
-
-### ✅ Prerequisites
-- Python 3.7+
-- Jupyter Notebook
-- Hardware: Raspberry Pi (or compatible), GPIO-compatible servo motors
-
-### 📦 Required Libraries
-
-Install dependencies using pip:
-
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-> _Tip: Create the `requirements.txt` file based on all imports used in the codebase._
+3. For hardware setup:
+- Connect servos to GPIO pins 17, 27, 22
+- Position webcam above sorting area
 
-### 🔧 Clone the Repository
+## Usage
 
+1. **Training the model**:
 ```bash
-git clone https://github.com/yourusername/AI-powered-waste-segregation.git
-cd AI-powered-waste-segregation
+jupyter notebook Fine_Tuning_the_Resnet_model.ipynb
 ```
 
----
+2. **Running live classification**:
+```bash
+jupyter notebook Webcam_integration.ipynb
+```
 
-## 🧪 Usage Guide
+3. **Testing sorting mechanism**:
+```bash
+python servo_motor_control.py
+```
 
-### 🔬 Model Training
-1. Prepare the dataset in the defined directory structure.
-2. Run `Fine Tuning the Resnet model.ipynb` to:
-   - Load and augment data
-   - Train and evaluate the ResNet model
-   - Save the best model as `best_model_resnet152v2.keras`
+## Demo Videos
 
-### 🔍 Real-Time Classification
-1. Update the model path in `Webcam integration.ipynb`.
-2. Execute the notebook to launch the live classification system.
+Check out these included demos:
+- `Simulation of Waste Segregator.mp4` - Full system in action
+- `Demonstration of running waste classifier AI.mp4` - Close-up of the classification
 
-### 🤖 Servo Motor Sorting
-1. Connect the servo motors as per GPIO pin configurations (details will be in `servo_motor_control.py`).
-2. Run the script to:
-   - Test flap movements
-   - Automatically trigger sorting based on classification results
+## Why I Built This
 
----
+I wanted to create a practical application of AI that could:
+- Help reduce improper waste disposal
+- Demonstrate how computer vision can solve real problems
+- Provide a foundation for more advanced recycling systems
 
-## 🌍 Applications
+The project shows how relatively simple AI and hardware can be combined to create useful automation systems.
 
-- **Smart Bins**: Automate in-house or public waste sorting.
-- **Recycling Plants**: Increase efficiency and reduce manual labor.
-- **Academic Projects**: Combine AI and robotics for impactful innovation.
-- **Research**: Use as a baseline for developing smart waste management systems.
+## Limitations
 
----
+- Requires good lighting for accurate classification
+- Physical mechanism needs precise calibration
+- Model could benefit from more diverse training data
 
-## 🤝 Contributing
+## Future Improvements
 
-We welcome contributions! Feel free to:
-- Open issues
-- Suggest features
-- Submit pull requests
+Some ideas I'm considering:
+- Adding a compaction mechanism
+- Implementing weight sensors
+- Creating a mobile app interface
+- Expanding to more waste categories
 
-Please ensure your changes follow the existing code style and include appropriate documentation.
+## License
 
----
-
-## 📄 License
-
-This project is licensed under the MIT License. See [LICENSE](./LICENSE) for more information.
-
----
-
-> 🧩 _Empowering sustainable waste management with AI and robotics._
-
----
-
-
+MIT License - feel free to use and modify this project.
