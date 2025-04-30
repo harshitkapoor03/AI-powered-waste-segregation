@@ -107,6 +107,3 @@ Some ideas I'm considering:
 - Creating a mobile app interface
 - Expanding to more waste categories
 
-## License
-
-MIT License - feel free to use and modify this project.
