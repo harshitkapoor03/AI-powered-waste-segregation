@@ -65,7 +65,7 @@ pip install -r requirements.txt
 
 1. **Training the model**:
 ```bash
-jupyter notebook Fine_Tuning_the_Resnet_model.ipynb
+jupyter notebook Fine Tuning MobileNetV2.ipynb
 ```
 
 2. **Running live classification**:
