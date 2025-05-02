@@ -6,7 +6,7 @@ This project implements a smart waste sorting system that uses computer vision t
 
 The system has three main components:
 
-1. **Computer Vision Model** - A fine-tuned ResNet152V2 model that classifies waste into:
+1. **Computer Vision Model** - A fine-tuned MobileNetV2 model that classifies waste into:
    - Organic
    - Recyclable 
    - Non-recyclable
@@ -26,7 +26,7 @@ The system has three main components:
 ## Technical Details
 
 ### Model Training
-- Used ResNet152V2 pretrained on ImageNet
+- Used MobileNetV2 pretrained on ImageNet
 - Fine-tuned on custom waste dataset
 - Implemented data augmentation to improve generalization
 - Achieved 90% validation accuracy
